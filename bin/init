@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const fs = require('fs');
+
+program
+    // .version(require('../package').version, '-v, --version') // 设置版本
+    // .command('rm <dir>')
+    .option('-p, --port [port]', 'Input port !') // 自定义形参[port]
+    // .option('-r, --recursive', 'Remove recursively')
+    // .action(function(dir, cmd){
+    //     console.log(999)
+    //     console.log('remove' + dir + (cmd.recursive ? 'recursively' : ''))
+    // })
+    program.command('rm <dir>')
+
+    .option('-r, --recursive', 'Remove recursively')
+    .action(function(dir, cmd){
+        console.log(999)
+        console.log('remove' + dir + (cmd.recursive ? 'recursively' : ''))
+    })
+    program.parse(process.argv); // 参数数组
+    
+console.log(program.port); // 使用自定义的port参数 
