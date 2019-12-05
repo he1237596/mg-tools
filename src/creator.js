@@ -2,9 +2,10 @@
  * @Author: Chris
  * @Date: 2019-12-03 14:47:30
  * @LastEditors: Chris
- * @LastEditTime: 2019-12-04 09:35:20
+ * @LastEditTime: 2019-12-04 20:13:46
  * @Descripttion: **
  */
+const program = require('commander')
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const log = data => console.log(chalk.green(data));
@@ -14,7 +15,8 @@ const error = data => console.log(chalk.yellow(data));
 const fs = require('fs');
 
 const tplBuilder = require('../template/index.js');
-console.log(tplBuilder)
+
+
 class Creator {
   constructor() {
     this.options = {

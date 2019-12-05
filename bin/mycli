@@ -1,5 +1,56 @@
 #!/usr/bin/env node
 
+const program = require('commander');//命令行工具
 const Creator = require('../src/creator.js');
 const project = new Creator();
-project.init();
+const config = require('../package');//package.json
+const ora = require('ora');//loading效果
+const download = require('download-git-repo');//下载远程文件
+const chalk = require('chalk');//自定义log显示主题
+program
+  .version(config.version)
+  .description("this is my cli")
+// .usage('<command> [options]') //-h 打印的用户提示，默认已有
+
+program
+  .command("init <dir>")
+  .alias("i")//别名
+  .description("初始化项目")
+  .action((dir) => {
+    // project.init();
+    // let spinner = ora('downloading template ...')
+    // spinner.start();
+    // Prompt.prompt(initQuestions).then(result => {
+    //     console.log("您选择的平台类型信息如下：");
+    //     console.log(JSON.stringify(result));
+    // })
+    // download(config.repository, destination, options, callback)
+    // repository 是远程仓库地址；destination 是存放下载的文件路径，也可以直接写文件名，默认就是当前目录；options 是一些选项，比如 { clone：boolean } 表示用 http download 还是 git clone 的形式下载。
+    // return;
+    const spinner = ora("Downloading...");
+    spinner.start();
+    download('he1237596/mg-tools#master', dir, {}, (err) => {
+      if (err) {
+        spinner.fail();
+        console.log(chalk.red(`Downloading failed. ${err}`))
+        return
+      }
+      // 结束加载图标
+      spinner.succeed();
+      console.log(chalk.green('\n Downloading completed!'))
+      console.log('\n To get started')
+      console.log(`\n cd ${dir} \n`)
+    })
+  });
+
+program
+  .command("login")
+  .alias("l")
+  .description("登陆平台")
+  .action(() => {
+    // Prompt.prompt(loginQuestions).then(result => {
+    //   console.log("您登陆的账户信息如下：");
+    //   console.log(JSON.stringify(result));
+    // })
+  })
+program.parse(process.argv)
