@@ -1,9 +1,9 @@
 {
   "name": "mg-tools",
-  "version": "1.1.2",
-  "description": "",
+  "version": "1.1.4",
+  "description": "my cli",
   "main": "index.js",
-  "bin": "./bin/mycli",
+  "bin": "./bin/build",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,7 +15,8 @@
     "download-git-repo": "^3.0.2",
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.0",
-    "ora": "^4.0.3"
+    "ora": "^4.0.3",
+    "uninstall": "0.0.0"
   },
   "devDependencies": {}
 }
